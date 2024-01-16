@@ -160,6 +160,17 @@ AND
     profesor.dni = idiomasprof.dni
 AND
     idiomasprof.codidioma = idioma.codidioma;
+    
+SELECT asignatura.nombre FROM asignatura, cicloform WHERE asignatura.codciclo = cicloform.codciclo AND cicloform.nombre ='DAM';
+
+SELECT profesor.cuenta FROM datospersonales, profesor WHERE datospersonales.dni = profesor.dni;
+
+SELECT datospersonales.nombre FROM datospersonales, alumno WHERE datospersonales.dni = alumno.dni;
+
+SELECT datospersonales.nombre FROM datospersonales, profesor WHERE datospersonales.dni = profesor.dni;
+
+
+/*SELECT * FROM ASIGNATURA, DATOSPERSONALES, MATRICULA WHERE datospersonales.nombre = 'PEDRO' AND */
 
 SELECT
     ASIGNATURA.NOMBRE
@@ -170,4 +181,50 @@ WHERE
 AND
     CICLOFORM.CODCICLO = ASIGNATURA.CODASIG;
 
+SELECT 
+    CICLOFORM.NOMBRE
+FROM 
+    CICLOFORM
+WHERE
+    CICLOFORM.TIPO = 'GRADO SUPERIOR'
+AND
+    CICLOFORM.TIPO = 'CICLO SUPERIOR';
+    
+SELECT 
+    cicloform.codciclo, asignatura.nombre
+FROM
+    ASIGNATURA, CICLOFORM
+WHERE
+    asignatura.codciclo = cicloform.codciclo;
+    
+SELECT * FROM asignatura WHERE ASIGNATURA.numhoras < 200;
 
+SELECT * FROM datospersonales WHERE DATOSPERSONALES.nombre = 'ANDREA';
+
+UPDATE datospersonales SET DATOSPERSONALES.apellido2 = NULL WHERE DATOSPERSONALES.nombre = 'ANDREA' ;
+
+SELECT * FROM  asignatura, matricula WHERE MATRICULA.CODASIG = ASIGNATURA.CODASIG AND ASIGNATURA.NOMBRE = 'Programación';
+
+DELETE FROM matricula WHERE MATRICULA.codasig=5;
+
+SELECT ASIGNATURA.*  FROM asignatura, matricula WHERE matricula.codasig = asignatura.codasig AND asignatura.nombre = ' EMPRESA';
+
+DELETE FROM MATRICULA WHERE matricula.codasig = 1;
+
+DELETE FROM asignatura WHERE ASIGNATURA.CODASIG = 1;
+
+SELECT * FROM asignatura WHERE asignatura.nombre = 'BBDD';
+
+UPDATE asignatura SET asignatura.nombre = 'BBDD' WHERE asignatura.nombre = 'Bases de datos';
+
+INSERT INTO CICLOFORM (CODCICLO,NOMBRE, TIPO) VALUES (6365, 'ELEC', 'GRADO MEDIO');
+
+INSERT INTO ASIGNATURA (CODASIG, NOMBRE, NUMHORAS, DNI, CODCICLO) VALUES (6 ,'Circuitos Baja Potencia', 100, '89621477A' , 6365);
+
+SELECT MATRICULA.* FROM matricula, datospersonales WHERE datospersonales.dni = matricula.dni AND datospersonales.nombre = 'PEDRO';
+
+UPDATE matricula SET matricula.codasig = 3 WHERE matricula.codasig = 2;
+
+INSERT INTO idioma (CODIDIOMA, DESCRIPCION) VALUES (50, 'ALEMAN');
+
+INSERT INTO idiomasprof (CODIDIOMA, DNI) VALUES ( 50, '44103779F');
